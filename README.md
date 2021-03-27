@@ -132,21 +132,21 @@ $ kustomize build | kubectl apply -f -
 
 ## Questions?
 
-### Hey, you're using k8s but it seems unscallable!
+### Hey, you're using k8s but it seems unscalable!
 
 We have single PostgreSQL sever and single Redis server in Kubernates manifests.
-Yes, it cannot be scalled out by adding pods.
+Yes, it cannot be scaled out by adding pods.
 
 But in our personal use case, it's important to stop all pods by `kubectl delete all --all` or
 entire cluster by `terraform destroy` to save money.
 We don't play Among Us for thousands of years at once.
 We just need it in a couple of hours for a day.
 
-If you have neccessity to make clusters can be scalled out while keeping higher availability,
+If you have neccessity to make clusters can be scaled out while keeping higher availability,
 you can swith PostgreSQL and Redis to managed goodies like
 Cloud SQL and Cloud Memorystore.
 
-## Where is TLS access?
+### Where is TLS access?
 
 On GCP, the cheapest way to have a TLS frontend,
 it will be having reverse proxy on GAE standard environment. 
@@ -166,7 +166,7 @@ First option will be GAE flexible environment.
 
 * Yes, it provides us domain name (like foo.us.r.appspot.com) as well.
 * Yes, it provides TLS too.
-* We have to disable auto scalling to allow us to stop instance.
+* We have to disable auto scaling to allow us to stop instance.
 
 Second option will be self-hosting; in other words,
 buying a domain, reserving a public IP address, creating TLS certificates,
