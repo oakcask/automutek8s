@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: galactus
+spec:
+  selector:
+    app: galactus
+  ports:
+  - port: 5858
+    targetPort: 5858
+    name: galactus

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: discovery
+data:
+  REDIS_ADDR: ""
+  GALACTUS_ADDR: ""
+  GALACTUS_PORT: ""
+  BROKER_PORT: ""
+  GALACTUS_EXTERNAL_URL: ""
+  POSTGRES_ADDR: ""

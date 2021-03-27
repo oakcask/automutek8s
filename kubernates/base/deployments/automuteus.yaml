@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: automuteus
+spec:
+  selector:
+    matchLabels:
+      app: automuteus
+  template:
+    metadata:
+      labels:
+        app: automuteus
+    spec:
+      containers:
+      - name: automuteus
+        image: denverquane/amongusdiscord
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+            name: discordbot
+        - secretRef:
+            name: postgres
+        - secretRef:
+            name: redis
+        - configMapRef:
+            name: discovery
+        - configMapRef:
+            name: automuteus-config
+        env:
+          - name: HOST
+            valueFrom:
+              configMapKeyRef:
+                name: discovery
+                key: GALACTUS_EXTERNAL_URL
+          - name: POSTGRES_PASS
+            value: $(POSTGRES_PASSWORD)
+          - name: REDIS_PASS
+            value: $(REDIS_PASSWORD)
+  replicas: 1

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: galactus
+spec:
+  selector:
+    matchLabels:
+      app: galactus
+  template:
+    metadata:
+      labels:
+        app: galactus
+    spec:
+      containers:
+      - name: galactus
+        image: automuteus/galactus
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "100m"
+        envFrom:
+          - secretRef:
+              name: discordbot
+          - secretRef:
+              name: redis
+          - configMapRef:
+              name: discovery
+          - configMapRef:
+              name: galactus-config
+        env:
+          - name: REDIS_PASS
+            value: $(REDIS_PASSWORD)
+        ports:
+        - containerPort: 8123
+        - containerPort: 5858
+  replicas: 1

@@ -1,0 +1,15 @@
+region: "asia-northeast1"
+zone: "asia-northeast1-b"
+cluster:
+  name: "au-cluster"
+  location: "asia-northeast1-b"
+  vpc_connector_name: "au-vpc-conn"
+network:
+  primary_cidr_range: 172.16.0.0/16
+  pod_cidr_range: 172.18.0.0/16
+  service_cidr_range: 172.19.0.0/16
+  master_cidr_range: 172.31.255.240/28
+  vpc_connector_cidr_range: 172.31.255.224/28
+  ingress_ip_resource_id: "ingress-ip"
+gate:
+  service_id: "default"

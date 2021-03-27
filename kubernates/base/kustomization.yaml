@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./statefulsets/postgres.yaml
+- ./services/postgres.yaml
+- ./statefulsets/redis.yaml
+- ./services/redis.yaml
+- ./deployments/automuteus.yaml
+- ./deployments/galactus.yaml
+- ./services/galactus.yaml
+- ./services/broker.yaml
+images:
+  - name: denverquane/amongusdiscord
+    # newTag: sha-528a327
+    newTag: latest
+  - name: automuteus/galactus
+    # newTag: sha-cf6b321
+    newTag: latest
+  - name: postgres
+    newTag: 12-alpine
+  - name: redis
+    newTag: alpine
+configMapGenerator:
+- name: automuteus-config
+  behavior: create
+  literals:
+  - EMOJI_GUILD_ID=
+  - CAPTURE_TIMEOUT=
+  - WORKER_BOT_TOKENS=
+  - AUTOMUTEUS_LISTENING=
+- name: discovery
+  behavior: create
+  literals:
+  - REDIS_ADDR=redis:6379
+  - GALACTUS_ADDR=http://galactus:5858
+  - GALACTUS_EXTERNAL_URL=https://localhost:8123
+  - GALACTUS_PORT=5858
+  - POSTGRES_ADDR=postgres:5432
+- name: galactus-config
+  behavior: create
+  literals:
+  - ACK_TIMEOUT_MS=1000
+  - TASK_TIMEOUT_MS=10000
+  - MAX_WORKERS=4
+  - BROKER_PORT=8123

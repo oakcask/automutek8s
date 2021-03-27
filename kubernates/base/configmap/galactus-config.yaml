@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: galactus-config
+data:
+  ACK_TIMEOUT_MS: "1000"
+  TASK_TIMEOUT_MS: "10000"
+  MAX_WORKERS: "8"

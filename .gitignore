@@ -1,0 +1,11 @@
+# mage and mage tasks generates:
+/mage_output_file.go
+/kustomization.yaml
+/.tfbackend
+/auto.tf.json
+
+# terraform generates:
+/.terraform*
+
+# 
+*.log
