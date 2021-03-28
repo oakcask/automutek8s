@@ -16,8 +16,8 @@ spec:
         image: denverquane/amongusdiscord
         resources:
           limits:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "32Mi"
+            cpu: "10m"
         ports:
         - containerPort: 5000
         envFrom:
@@ -41,4 +41,4 @@ spec:
             value: $(POSTGRES_PASSWORD)
           - name: REDIS_PASS
             value: $(REDIS_PASSWORD)
-  replicas: 1
+  replicas: 4
