@@ -192,6 +192,7 @@ resource "google_container_cluster" "primary" {
     node_config {
       preemptible  = true
       machine_type = "e2-micro"
+      disk_size_gb = 10
 
       metadata = {
         disable-legacy-endpoints = "true"
