@@ -16,8 +16,8 @@ spec:
         image: automuteus/galactus
         resources:
           limits:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "16Mi"
+            cpu: "10m"
         envFrom:
           - secretRef:
               name: discordbot
@@ -33,4 +33,4 @@ spec:
         ports:
         - containerPort: 8123
         - containerPort: 5858
-  replicas: 1
+  replicas: 4
