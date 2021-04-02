@@ -136,6 +136,9 @@ resource "google_container_cluster" "primary" {
   network = google_compute_network.primary-vpc.self_link
   subnetwork = google_compute_subnetwork.primary-vpc-subnet.self_link
 
+  logging_service = "none"
+  monitoring_service = "none"
+
   release_channel {
     channel = "REGULAR"
   }
