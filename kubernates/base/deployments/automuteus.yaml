@@ -17,7 +17,7 @@ spec:
         resources:
           limits:
             memory: "32Mi"
-            cpu: "10m"
+            cpu: "200m"
         ports:
         - containerPort: 5000
         envFrom:
@@ -41,4 +41,4 @@ spec:
             value: $(POSTGRES_PASSWORD)
           - name: REDIS_PASS
             value: $(REDIS_PASSWORD)
-  replicas: 4
+  replicas: 1
