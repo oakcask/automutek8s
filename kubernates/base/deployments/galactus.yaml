@@ -17,7 +17,7 @@ spec:
         resources:
           limits:
             memory: "16Mi"
-            cpu: "10m"
+            cpu: "200m"
         envFrom:
           - secretRef:
               name: discordbot
@@ -33,4 +33,4 @@ spec:
         ports:
         - containerPort: 8123
         - containerPort: 5858
-  replicas: 4
+  replicas: 1
