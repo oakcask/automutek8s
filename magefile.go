@@ -38,7 +38,7 @@ type GKE mg.Namespace
 type GAE mg.Namespace
 
 func loadSecretManifests() ([]corev1.Secret, error) {
-	glob := path.Join("kubernates", "base", "secrets", "*.yaml")
+	glob := path.Join("kubernetes", "base", "secrets", "*.yaml")
 	paths, e := filepath.Glob(glob)
 	if e != nil {
 		return nil, e
